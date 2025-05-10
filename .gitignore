@@ -1,4 +1,4 @@
-data/streetview_images/
-data/geonames/
-data/data/
-data/cache/
+data_extraction/streetview_images/
+data_extraction/geonames/
+data_extraction/data/
+data_extraction/cache/
