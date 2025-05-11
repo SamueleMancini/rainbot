@@ -3,3 +3,4 @@ data_extraction/cache/
 cubo_env/
 data_extraction/additional_images
 data_extraction/streetview_images
+datasets/
