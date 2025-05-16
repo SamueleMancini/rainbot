@@ -1,4 +1,3 @@
-import os
 from PIL import Image
 import torch
 import torch.nn as nn
@@ -7,7 +6,11 @@ from torchvision import transforms, models
 from torch.utils.data import Dataset, DataLoader
 import matplotlib.pyplot as plt
 import numpy as np
-
+from sklearn.metrics import (
+    top_k_accuracy_score,
+    classification_report,
+    confusion_matrix
+)
 
 ############################## Data Loading and Preprocessing ##############################
 
@@ -166,37 +169,31 @@ def train_model(model, train_loader, val_loader, device, optimizer, checkpoint_p
 
     print("Training complete.")
     return {
-        "train_losses": train_losses,
-        "train_accs": train_accs,
-        "val_losses": val_losses,
-        "val_accs": val_accs
+        "train_loss": train_losses,
+        "train_acc": train_accs,
+        "val_loss": val_losses,
+        "val_acc": val_accs
     }
 
 
-def plot_training_curves(train_losses, train_accs, val_losses, val_accs):
+def plot_training_curves(train_losses, train_accs, val_losses, val_accs, eval_every=50):
+    import matplotlib.pyplot as plt
+    import numpy as np
 
     fig, axs = plt.subplots(1, 2, figsize=(14, 5))
 
-    x_val = np.arange(
-        0,
-        len(train_losses) - len(val_losses),
-        len(train_losses) // len(val_losses)
-    )
+    # X for val losses/accs corresponds to evaluation steps
+    x_val = np.arange(eval_every, eval_every * len(val_losses) + 1, eval_every)
+
     axs[0].plot(train_losses, label='Train Loss')
-    axs[0].plot(x_val, val_losses,      label='Val Loss')
+    axs[0].plot(x_val, val_losses, label='Val Loss')
     axs[0].set_title('Loss')
     axs[0].set_xlabel('Step')
     axs[0].set_ylabel('Loss')
     axs[0].legend()
 
-    # Plot Accuracies
-    x_val_acc = np.arange(
-        0,
-        len(train_accs) - len(val_accs),
-        len(train_accs) // len(val_accs)
-    )
-    axs[1].plot(train_accs,    label='Train Acc')
-    axs[1].plot(x_val_acc, val_accs, label='Val Acc')
+    axs[1].plot(train_accs, label='Train Acc')
+    axs[1].plot(x_val, val_accs, label='Val Acc')
     axs[1].set_title('Accuracy')
     axs[1].set_xlabel('Step')
     axs[1].set_ylabel('Accuracy')
@@ -204,3 +201,112 @@ def plot_training_curves(train_losses, train_accs, val_losses, val_accs):
 
     plt.tight_layout()
     plt.show()
+
+
+
+    ############################## Evaluation ##############################
+
+def load_model(model_path, device):
+    model = models.resnet50(weights=models.ResNet50_Weights.DEFAULT)
+    model.fc = nn.Linear(model.fc.in_features, 79)
+    model.load_state_dict(torch.load(model_path, map_location=device))
+    model = model.to(device)
+    model.eval()
+    return model
+
+
+softmax = torch.nn.Softmax(dim=1)
+
+def evaluate_model(model, data_loader, criterion, device):
+    """
+    Runs model on data_loader and returns:
+      - avg_loss: float
+      - top1_acc: float
+      - all_targets: np.array shape (N,)
+      - all_preds:   np.array shape (N,)
+      - all_probs:   np.array shape (N, num_classes)
+    """
+    model.eval()
+    total_loss, total_correct, total_samples = 0.0, 0, 0
+    all_preds, all_targets, all_probs = [], [], []
+
+    with torch.no_grad():
+        for imgs, labels in data_loader:
+            imgs, labels = imgs.to(device), labels.to(device)
+            outputs = model(imgs)
+            loss    = criterion(outputs, labels)
+
+            # accumulate loss & top‐1 accuracy
+            batch_size = imgs.size(0)
+            total_loss    += loss.item() * batch_size
+            preds         = outputs.argmax(dim=1)
+            total_correct += (preds == labels).sum().item()
+            total_samples += batch_size
+
+            # store for detailed metrics
+            all_probs.append(softmax(outputs).cpu().numpy())
+            all_preds.append(preds.cpu().numpy())
+            all_targets.append(labels.cpu().numpy())
+
+    # flatten
+    all_probs   = np.vstack(all_probs)
+    all_preds   = np.concatenate(all_preds)
+    all_targets = np.concatenate(all_targets)
+
+    avg_loss = total_loss / total_samples
+    top1_acc = total_correct / total_samples
+
+    return avg_loss, top1_acc, all_targets, all_preds, all_probs
+
+
+def print_metrics(all_targets, all_preds, all_probs, class_names):
+    """
+    Given flattened targets, preds, and probs:
+      - prints Top-3/5 accuracy
+      - prints classification report
+      - plots normalized confusion matrix
+    """
+    top3 = top_k_accuracy_score(all_targets, all_probs, k=3)
+    top5 = top_k_accuracy_score(all_targets, all_probs, k=5)
+    print(f"Top-3 Accuracy: {top3:.4f}")
+    print(f"Top-5 Accuracy: {top5:.4f}\n")
+
+    report = classification_report(
+        all_targets, all_preds,
+        target_names=class_names,
+        zero_division=0
+    )
+    print("Classification Report:\n")
+    print(report)
+
+
+def plot_confusion_matrix(all_targets, all_preds, class_names, size=12):
+    
+    cm = confusion_matrix(all_targets, all_preds, normalize='true')
+    fig, ax = plt.subplots(figsize=(size,size))
+    im = ax.imshow(cm, interpolation='nearest', cmap=plt.cm.Blues)
+    ax.set_title("Normalized Confusion Matrix")
+    fig.colorbar(im, ax=ax)
+    ticks = np.arange(len(class_names))
+    ax.set_xticks(ticks); ax.set_yticks(ticks)
+    ax.set_xticklabels(class_names, rotation=90)
+    ax.set_yticklabels(class_names)
+    ax.set_ylabel('True Label')
+    ax.set_xlabel('Predicted Label')
+    plt.tight_layout()
+    plt.show()
+
+
+def show_sample_predictions(all_targets, all_probs, class_names, n=5):
+    """
+    Prints n random examples of true label vs top-3 predictions+probs.
+    """
+    total = len(all_targets)
+    print(f"\nSample predictions ({n} examples):\n")
+    idxs = np.random.choice(total, size=n, replace=False)
+    for i in idxs:
+        true_lbl = class_names[all_targets[i]]
+        probs_i  = all_probs[i]
+        topk     = probs_i.argsort()[::-1][:3]
+        topk_str = ", ".join(f"{class_names[k]} ({probs_i[k]:.2f})" for k in topk)
+        print(f"True: {true_lbl:20s}  ↔  Pred Top-3: {topk_str}")
