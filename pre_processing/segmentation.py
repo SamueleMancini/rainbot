@@ -6,15 +6,14 @@ from tqdm import tqdm
 from transformers import SegformerFeatureExtractor, SegformerForSemanticSegmentation
 
 # === CONFIG ===
-IMAGE_DIR = "/home/andreafabbricatore/rainbot/datasets/final"
-OUTPUT_DIR = "/home/andreafabbricatore/rainbot/datasets/segmented"
+IMAGE_DIR = "/home/andreafabbricatore/rainbot/pre_processing/datasets/extra_data"
+OUTPUT_DIR = "/home/andreafabbricatore/rainbot/pre_processing/segmented/"
 MODEL_NAME = "nvidia/segformer-b0-finetuned-cityscapes-768-768"
 
 # Cityscapes class mapping
 CITYSCAPES_ID2LABEL = {
-    0: 'road', 1: 'sidewalk', 2: 'building', 3: 'wall', 4: 'fence',
-    5: 'pole', 6: 'traffic_light', 7: 'traffic_sign', 8: 'vegetation', 9: 'terrain',
-    10: 'sky', 11: 'person', 12: 'rider', 13: 'car', 14: 'truck',
+    0: 'road', 1: 'sidewalk', 2: 'building', 4: 'fence',
+    5: 'pole', 6: 'traffic_light', 7: 'traffic_sign', 8: 'vegetation', 9: 'terrain', 11: 'person', 12: 'rider', 13: 'car', 14: 'truck',
     15: 'bus', 16: 'train', 17: 'motorcycle', 18: 'bicycle',
 }
 
