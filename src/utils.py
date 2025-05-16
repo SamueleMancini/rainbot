@@ -176,7 +176,7 @@ def train_model(model, train_loader, val_loader, device, optimizer, checkpoint_p
     }
 
 
-def plot_training_curves(train_losses, train_accs, val_losses, val_accs, eval_every=50):
+def plot_training_curves(project_root, train_losses, train_accs, val_losses, val_accs, eval_every=50):
     import matplotlib.pyplot as plt
     import numpy as np
 
@@ -200,9 +200,14 @@ def plot_training_curves(train_losses, train_accs, val_losses, val_accs, eval_ev
     axs[1].legend()
 
     plt.tight_layout()
+    
+    # Create plots directory if it doesn't exist
+    plots_dir = project_root / "plots"
+    plots_dir.mkdir(exist_ok=True)
+    
+    # Save the plot
+    plt.savefig(plots_dir / "training_curves.png", dpi=300, bbox_inches='tight')
     plt.show()
-
-
 
     ############################## Evaluation ##############################
 
