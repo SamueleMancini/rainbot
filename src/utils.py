@@ -1,3 +1,4 @@
+import os
 from PIL import Image
 import torch
 import torch.nn as nn
@@ -102,6 +103,9 @@ def compute_val_metrics(model, val_loader, criterion, device):
 
 def train_model(model, train_loader, val_loader, device, optimizer, checkpoint_path, criterion=nn.CrossEntropyLoss(), epochs=10, eval_every=50, patience=3):
     
+    # Ensure directory exists
+    os.makedirs(os.path.dirname(checkpoint_path), exist_ok=True)
+
     best_val_loss = float('inf')
     patience_counter = 0
 

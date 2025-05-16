@@ -36,8 +36,16 @@ project_root   = Path().resolve().parent
 train_root  = project_root/ "datasets" / "final_datasets" / "train"
 dev_root  = project_root/ "datasets" / "final_datasets" / "test"
 
+print("Loading data...")
+print(train_root)
+print(dev_root)
+
 train_loader = get_dataloaders(train_root, batch_size=32)
 val_loader = get_dataloaders(dev_root, batch_size=32)
+
+print("Data loaded")
+
+print("Loading model...")
 
 model = models.resnet50(weights=models.ResNet50_Weights.DEFAULT)
 model.fc = nn.Linear(model.fc.in_features, num_classes)
@@ -50,6 +58,8 @@ for buf in model.buffers():
 
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr= 1e-4)
+
+print("Starting training...")
 
 results = train_model(model, train_loader, val_loader, device, optimizer, project_root/ "models" / "resnet_finetuned" / "main.pth", criterion=nn.CrossEntropyLoss(), epochs=50, eval_every=50, patience=3)
 
