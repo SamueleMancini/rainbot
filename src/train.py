@@ -34,7 +34,7 @@ print("Number of classes:", num_classes)
 
 project_root   = Path().resolve().parent
 train_root  = project_root/ "datasets" / "final_datasets" / "train"
-dev_root  = project_root/ "datasets" / "final_datasets" / "test"
+dev_root  = project_root/ "datasets" / "final_datasets" / "val"
 
 print("Loading data...")
 print(train_root)
