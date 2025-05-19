@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from PIL import Image
 import torch
 import torch.nn as nn
@@ -180,13 +181,14 @@ def train_model(model, train_loader, val_loader, device, optimizer, checkpoint_p
     }
 
 
-def plot_training_curves(project_root, train_losses, train_accs, val_losses, val_accs, eval_every=50):
+def plot_training_curves(project_root, train_losses, train_accs, val_losses, val_accs, eval_every=50, segment=None):
     import matplotlib.pyplot as plt
     import numpy as np
+    from pathlib import Path
+
+    project_root = Path(project_root)
 
     fig, axs = plt.subplots(1, 2, figsize=(14, 5))
-
-    # X for val losses/accs corresponds to evaluation steps
     x_val = np.arange(eval_every, eval_every * len(val_losses) + 1, eval_every)
 
     axs[0].plot(train_losses, label='Train Loss')
@@ -204,16 +206,17 @@ def plot_training_curves(project_root, train_losses, train_accs, val_losses, val
     axs[1].legend()
 
     plt.tight_layout()
-    
-    # Create plots directory if it doesn't exist
+
     plots_dir = project_root / "plots"
     plots_dir.mkdir(exist_ok=True)
-    
-    # Save the plot
-    plt.savefig(plots_dir / "training_curves.png", dpi=300, bbox_inches='tight')
-    plt.show()
 
-    ############################## Evaluation ##############################
+    if segment:
+        plot_path = plots_dir / f"training_curves_{segment}.png"
+    else:
+        plot_path = plots_dir / "training_curves.png"
+
+    plt.savefig(plot_path, dpi=300, bbox_inches='tight')
+    plt.show()
 
 def load_model(model_path, device):
     model = models.resnet50(weights=models.ResNet50_Weights.DEFAULT)

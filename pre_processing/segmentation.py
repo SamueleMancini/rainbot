@@ -6,7 +6,7 @@ from tqdm import tqdm
 from transformers import SegformerFeatureExtractor, SegformerForSemanticSegmentation
 
 # === CONFIG ===
-IMAGE_DIR = "/home/andreafabbricatore/rainbot/pre_processing/datasets/extra_data"
+BASE_DIR = "/home/andreafabbricatore/rainbot/datasets/final_datasets"
 OUTPUT_DIR = "/home/andreafabbricatore/rainbot/pre_processing/segmented/"
 MODEL_NAME = "nvidia/segformer-b0-finetuned-cityscapes-768-768"
 
@@ -22,7 +22,7 @@ CITYSCAPES_ID2LABEL = {
 feature_extractor = SegformerFeatureExtractor.from_pretrained(MODEL_NAME)
 model = SegformerForSemanticSegmentation.from_pretrained(MODEL_NAME).eval()
 
-def segment_and_save(image_path, country):
+def segment_and_save(image_path, country, split):
     image = Image.open(image_path).convert("RGB")
     image_np = np.array(image)
     inputs = feature_extractor(images=image, return_tensors="pt")
@@ -48,24 +48,28 @@ def segment_and_save(image_path, country):
             masked_img[mask == 0] = 0
             masked_pil = Image.fromarray(masked_img)
 
-            class_country_dir = os.path.join(OUTPUT_DIR, class_name, country)
+            class_country_dir = os.path.join(OUTPUT_DIR, class_name, country, split)
             os.makedirs(class_country_dir, exist_ok=True)
 
             save_path = os.path.join(class_country_dir, f"{base_name}_{class_name}.png")
             masked_pil.save(save_path)
 
 # === MAIN ===
+splits = ['train', 'test', 'val']
 image_paths = []
-for root, _, files in os.walk(IMAGE_DIR):
-    for file in files:
-        if file.lower().endswith(('.png', '.jpg', '.jpeg')):
-            full_path = os.path.join(root, file)
-            # Assume country is the immediate folder inside IMAGE_DIR
-            rel_path = os.path.relpath(full_path, IMAGE_DIR)
-            country = rel_path.split(os.sep)[0]  # First directory after IMAGE_DIR
-            image_paths.append((full_path, country))
 
-for image_path, country in tqdm(image_paths, desc="Segmenting images"):
-    segment_and_save(image_path, country)
+for split in splits:
+    split_dir = os.path.join(BASE_DIR, split)
+    for root, _, files in os.walk(split_dir):
+        for file in files:
+            if file.lower().endswith(('.png', '.jpg', '.jpeg')):
+                full_path = os.path.join(root, file)
+                # Get country from the path structure
+                rel_path = os.path.relpath(full_path, split_dir)
+                country = rel_path.split(os.sep)[0]  # First directory after split
+                image_paths.append((full_path, country, split))
+
+for image_path, country, split in tqdm(image_paths, desc="Segmenting images"):
+    segment_and_save(image_path, country, split)
 
 print("Done. Masks saved in:", OUTPUT_DIR)
