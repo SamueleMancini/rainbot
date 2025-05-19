@@ -8,6 +8,7 @@ from torchvision import transforms, models
 from torch.utils.data import Dataset, DataLoader
 import matplotlib.pyplot as plt
 import numpy as np
+import random
 from sklearn.metrics import (
     top_k_accuracy_score,
     classification_report,
@@ -218,6 +219,10 @@ def plot_training_curves(project_root, train_losses, train_accs, val_losses, val
     plt.savefig(plot_path, dpi=300, bbox_inches='tight')
     plt.show()
 
+
+
+############################## Evaluation ##############################
+
 def load_model(model_path, device):
     model = models.resnet50(weights=models.ResNet50_Weights.DEFAULT)
     model.fc = nn.Linear(model.fc.in_features, 79)
@@ -322,3 +327,26 @@ def show_sample_predictions(all_targets, all_probs, class_names, n=5):
         topk     = probs_i.argsort()[::-1][:3]
         topk_str = ", ".join(f"{class_names[k]} ({probs_i[k]:.2f})" for k in topk)
         print(f"True: {true_lbl:20s}  ↔  Pred Top-3: {topk_str}")
+
+
+def plot_random_image_with_label_and_prediction(test_root, model, device):
+    # Pick random image and true label
+    all_countries = [d for d in test_root.iterdir() if d.is_dir()]
+    country = random.choice(all_countries).name
+    img_files = list((test_root / country).glob("*.jpg"))
+    img_path = random.choice(img_files)
+
+    img = Image.open(img_path).convert("RGB")
+
+    # Preprocess and predict
+    input_tensor = transform(img).unsqueeze(0).to(device)  # add batch dimension
+    with torch.no_grad():
+        outputs = model(input_tensor)
+        pred_idx = outputs.argmax(dim=1).item()
+        pred_label = COUNTRIES[pred_idx]
+
+    # Visualize the image with true label
+    plt.imshow(img)
+    plt.axis('off')
+    plt.title(f"{country}, Pred: {pred_label}")
+    plt.show()
