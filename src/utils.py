@@ -14,6 +14,7 @@ from sklearn.metrics import (
     classification_report,
     confusion_matrix
 )
+import torch.nn.functional as F
 
 ############################## Data Loading and Preprocessing ##############################
 
@@ -350,3 +351,85 @@ def plot_random_image_with_label_and_prediction(test_root, model, device):
     plt.axis('off')
     plt.title(f"{country}, Pred: {pred_label}")
     plt.show()
+
+
+
+############################## GradCAM ##############################
+
+
+def gradCAM(test_root, model, device):
+    """
+    test_root: folder of per-country subfolders (test set)
+    model: your fine-tuned ResNet model
+    device: torch.device("mps" or "cuda" or "cpu")
+    """
+    # 0) Hook containers
+    activations = gradients = None
+
+    # 1) Hook callbacks
+    def forward_hook(module, inp, outp):
+        nonlocal activations
+        activations = outp.detach()
+    def backward_hook(module, grad_in, grad_out):
+        nonlocal gradients
+        gradients = grad_out[0].detach()
+
+    # 2) Attach hooks to the last ResNet conv layer
+    target_layer = model.layer4[-1].conv3
+    handle_f = target_layer.register_forward_hook(forward_hook)
+    handle_b = target_layer.register_full_backward_hook(backward_hook)
+
+    # 3) Pick a random test image + ground truth
+    country_dirs = [d for d in test_root.iterdir() if d.is_dir()]
+    true_country = random.choice(country_dirs).name
+    img_path = random.choice(list((test_root/true_country).glob("*.jpg")))
+    orig = Image.open(img_path).convert("RGB")
+    # Keep a display copy
+    disp = orig.resize((224,224), Image.BILINEAR)
+
+    # 4) Preprocess and forward for classification (no no_grad!)
+    model.to(device).eval()
+    inp = transform(orig).unsqueeze(0).to(device)
+
+    # Zero grads before forward
+    model.zero_grad()
+    outputs = model(inp)               # <-- no torch.no_grad() here!
+    pred_idx = outputs.argmax(dim=1).item()
+    pred_label = COUNTRIES[pred_idx]
+
+    # 5) Backward on the predicted class score
+    score = outputs[0, pred_idx]
+    score.backward()
+
+    # 6) Build Grad-CAM
+    weights = gradients.mean(dim=(2,3), keepdim=True)    # (1, C, 1, 1)
+    cam_map = F.relu((weights * activations).sum(dim=1, keepdim=True))
+    cam_map = F.interpolate(cam_map,
+                            size=inp.shape[2:],
+                            mode='bilinear',
+                            align_corners=False)
+    cam = cam_map.squeeze().cpu().numpy()
+    cam = (cam - cam.min())/(cam.max()-cam.min()+1e-8)
+
+    # 7) Plot side-by-side
+    fig, (ax1, ax2) = plt.subplots(1,2,figsize=(12,5))
+
+    # Original + labels
+    ax1.imshow(disp)
+    ax1.set_title(f"True: {true_country}\nPred: {pred_label}")
+    ax1.axis('off')
+
+    # Grad-CAM overlay
+    img_np = np.array(disp)/255.0
+    heatmap = plt.cm.jet(cam)[...,:3]
+    overlay = 0.4*heatmap + 0.6*img_np
+    ax2.imshow(overlay)
+    ax2.set_title("Grad-CAM")
+    ax2.axis('off')
+
+    plt.tight_layout()
+    plt.show()
+
+    # 8) Remove hooks
+    handle_f.remove()
+    handle_b.remove()
