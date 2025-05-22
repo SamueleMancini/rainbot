@@ -102,7 +102,7 @@ for segment in SEGMENTS:
         per_device_eval_batch_size=32,
         evaluation_strategy="epoch",
         save_strategy="epoch",
-        num_train_epochs=10,
+        num_train_epochs=100,
         learning_rate=5e-5,
         logging_dir=str(project_root / "logs" / f"{segment}"),
         load_best_model_at_end=True,
