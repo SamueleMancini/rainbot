@@ -18,7 +18,8 @@ from sklearn.metrics import (
 
 COUNTRIES = ["Albania","Andorra","Argentina","Australia","Austria","Bangladesh","Belgium","Bhutan","Bolivia","Botswana","Brazil","Bulgaria","Cambodia","Canada","Chile","Colombia","Croatia","Czechia","Denmark","Dominican Republic","Ecuador","Estonia","Eswatini","Finland","France","Germany","Ghana","Greece","Greenland","Guatemala","Hungary","Iceland","Indonesia","Ireland","Israel","Italy","Japan","Jordan","Kenya","Kyrgyzstan","Latvia","Lesotho","Lithuania","Luxembourg","Malaysia","Mexico","Mongolia","Montenegro","Netherlands","New Zealand","Nigeria","North Macedonia","Norway","Palestine","Peru","Philippines","Poland","Portugal","Romania","Russia","Senegal","Serbia","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","Sweden","Switzerland","Taiwan","Thailand","Turkey","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay"]
 num_classes = len(COUNTRIES)
-
+CONTINENTS = ["Africa", "Asia", "Europe", "North America", "Oceania", "South America"]
+num_classes_continents = len(CONTINENTS)
 
 
 class CountryImageDataset(Dataset):
@@ -28,6 +29,26 @@ class CountryImageDataset(Dataset):
         for idx, country in enumerate(COUNTRIES):
             country_dir = root_dir / country
             for img_file in country_dir.iterdir():
+                if img_file.suffix.lower() in (".jpg", ".jpeg", ".png"):
+                    self.samples.append((img_file, idx))
+
+    def __len__(self):
+        return len(self.samples)
+
+    def __getitem__(self, i):
+        path, label = self.samples[i]
+        img = Image.open(path).convert("RGB")
+        if self.transform:
+            img = self.transform(img)
+        return img, label
+    
+class ContinentImageDataset(Dataset):
+    def __init__(self, root_dir, transform=None):
+        self.samples = []
+        self.transform = transform
+        for idx, continent in enumerate(CONTINENTS):
+            continent_dir = root_dir / continent
+            for img_file in continent_dir.iterdir():
                 if img_file.suffix.lower() in (".jpg", ".jpeg", ".png"):
                     self.samples.append((img_file, idx))
 
@@ -54,6 +75,10 @@ def get_dataloaders(root_dir, batch_size=32):
     data_loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
     return data_loader
 
+def get_dataloaders_continents(root_dir, batch_size=32):
+    dataset = ContinentImageDataset(root_dir, transform)
+    data_loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
+    return data_loader
 
 
 ############################## Model ##############################
@@ -218,9 +243,9 @@ def plot_training_curves(project_root, train_losses, train_accs, val_losses, val
     plt.savefig(plot_path, dpi=300, bbox_inches='tight')
     plt.show()
 
-def load_model(model_path, device):
+def load_model(model_path, num_classes, device):
     model = models.resnet50(weights=models.ResNet50_Weights.DEFAULT)
-    model.fc = nn.Linear(model.fc.in_features, 79)
+    model.fc = nn.Linear(model.fc.in_features, num_classes)
     model.load_state_dict(torch.load(model_path, map_location=device))
     model = model.to(device)
     model.eval()
@@ -280,16 +305,12 @@ def print_metrics(all_targets, all_preds, all_probs, class_names):
     """
     top3 = top_k_accuracy_score(all_targets, all_probs, k=3)
     top5 = top_k_accuracy_score(all_targets, all_probs, k=5)
-    print(f"Top-3 Accuracy: {top3:.4f}")
-    print(f"Top-5 Accuracy: {top5:.4f}\n")
-
     report = classification_report(
         all_targets, all_preds,
         target_names=class_names,
         zero_division=0
     )
-    print("Classification Report:\n")
-    print(report)
+    return top3, top5, report
 
 
 def plot_confusion_matrix(all_targets, all_preds, class_names, size=12):

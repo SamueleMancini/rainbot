@@ -1,0 +1,23 @@
+
+Results for traffic_sign:
+Average loss: 1.9978
+Top-1 accuracy: 0.1806
+
+Top-3 accuracy: 0.5741
+Top-5 accuracy: 0.8750
+
+Classification Report:
+               precision    recall  f1-score   support
+
+       Africa       0.34      0.31      0.32        36
+         Asia       0.12      0.33      0.18        36
+       Europe       0.15      0.08      0.11        36
+North America       0.12      0.06      0.08        36
+      Oceania       0.45      0.28      0.34        36
+South America       0.04      0.03      0.03        36
+
+     accuracy                           0.18       216
+    macro avg       0.21      0.18      0.18       216
+ weighted avg       0.21      0.18      0.18       216
+
+==================================================

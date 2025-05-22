@@ -1,0 +1,189 @@
+2025-05-21 00:16:08,687 INFO    StreamThr :1313039 [internal.py:wandb_internal():86] W&B internal server running at pid: 1313039, started at: 2025-05-21 00:16:08.686584
+2025-05-21 00:16:08,690 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: status
+2025-05-21 00:16:08,692 INFO    WriterThread:1313039 [datastore.py:open_for_write():87] open: /home/andreafabbricatore/rainbot/src/wandb/run-20250521_001608-5uzdolj6/run-5uzdolj6.wandb
+2025-05-21 00:16:08,694 DEBUG   SenderThread:1313039 [sender.py:send():379] send: header
+2025-05-21 00:16:08,696 DEBUG   SenderThread:1313039 [sender.py:send():379] send: run
+2025-05-21 00:16:09,229 INFO    SenderThread:1313039 [dir_watcher.py:__init__():211] watching files in: /home/andreafabbricatore/rainbot/src/wandb/run-20250521_001608-5uzdolj6/files
+2025-05-21 00:16:09,230 INFO    SenderThread:1313039 [sender.py:_start_run_threads():1124] run started: 5uzdolj6 with start time 1747779368.684965
+2025-05-21 00:16:09,231 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: check_version
+2025-05-21 00:16:09,232 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: check_version
+2025-05-21 00:16:09,317 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: run_start
+2025-05-21 00:16:09,336 DEBUG   HandlerThread:1313039 [system_info.py:__init__():26] System info init
+2025-05-21 00:16:09,336 DEBUG   HandlerThread:1313039 [system_info.py:__init__():41] System info init done
+2025-05-21 00:16:09,336 INFO    HandlerThread:1313039 [system_monitor.py:start():194] Starting system monitor
+2025-05-21 00:16:09,337 INFO    SystemMonitor:1313039 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2025-05-21 00:16:09,337 INFO    HandlerThread:1313039 [system_monitor.py:probe():214] Collecting system info
+2025-05-21 00:16:09,338 INFO    SystemMonitor:1313039 [interfaces.py:start():190] Started cpu monitoring
+2025-05-21 00:16:09,339 INFO    SystemMonitor:1313039 [interfaces.py:start():190] Started disk monitoring
+2025-05-21 00:16:09,341 INFO    SystemMonitor:1313039 [interfaces.py:start():190] Started gpu monitoring
+2025-05-21 00:16:09,342 INFO    SystemMonitor:1313039 [interfaces.py:start():190] Started memory monitoring
+2025-05-21 00:16:09,343 INFO    SystemMonitor:1313039 [interfaces.py:start():190] Started network monitoring
+2025-05-21 00:16:09,372 DEBUG   HandlerThread:1313039 [system_info.py:probe():150] Probing system
+2025-05-21 00:16:09,374 DEBUG   HandlerThread:1313039 [system_info.py:_probe_git():135] Probing git
+2025-05-21 00:16:09,380 DEBUG   HandlerThread:1313039 [system_info.py:_probe_git():143] Probing git done
+2025-05-21 00:16:09,380 DEBUG   HandlerThread:1313039 [system_info.py:probe():198] Probing system done
+2025-05-21 00:16:09,380 DEBUG   HandlerThread:1313039 [system_monitor.py:probe():223] {'os': 'Linux-6.8.0-52-generic-x86_64-with-glibc2.35', 'python': '3.10.12', 'heartbeatAt': '2025-05-20T22:16:09.372321', 'startedAt': '2025-05-20T22:16:08.679409', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/home/andreafabbricatore/rainbot/src/train_segments_vit.py', 'codePathLocal': 'train_segments_vit.py', 'codePath': 'src/train_segments_vit.py', 'git': {'remote': 'git@github.com:andreafabbricatore/rainbot.git', 'commit': 'ee1b25336ce52369ece053f0037b52181864f07b'}, 'email': 'andy.fabb10@gmail.com', 'root': '/home/andreafabbricatore/rainbot', 'host': 'tangherloni-WS-C621E-SAGE-Series', 'username': 'andreafabbricatore', 'executable': '/usr/bin/python3', 'cpu_count': 44, 'cpu_count_logical': 88, 'cpu_freq': {'current': 1184.6893636363639, 'min': 1000.0, 'max': 3700.0}, 'cpu_freq_per_core': [{'current': 1000.088, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.132, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 3400.259, 'min': 1000.0, 'max': 3700.0}, {'current': 3552.476, 'min': 1000.0, 'max': 3700.0}, {'current': 3400.003, 'min': 1000.0, 'max': 3700.0}, {'current': 3400.016, 'min': 1000.0, 'max': 3700.0}, {'current': 3418.644, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.128, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 3700.011, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 2599.77, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}, {'current': 1000.0, 'min': 1000.0, 'max': 3700.0}], 'disk': {'/': {'total': 1832.2072448730469, 'used': 1348.796588897705}}, 'gpu': 'NVIDIA GeForce RTX 4090', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 4090', 'memory_total': 25757220864}], 'memory': {'total': 187.49931716918945}}
+2025-05-21 00:16:09,380 INFO    HandlerThread:1313039 [system_monitor.py:probe():224] Finished collecting system info
+2025-05-21 00:16:09,381 INFO    HandlerThread:1313039 [system_monitor.py:probe():227] Publishing system info
+2025-05-21 00:16:09,381 INFO    HandlerThread:1313039 [system_monitor.py:probe():229] Finished publishing system info
+2025-05-21 00:16:09,386 DEBUG   SenderThread:1313039 [sender.py:send():379] send: files
+2025-05-21 00:16:09,386 INFO    SenderThread:1313039 [sender.py:_save_file():1390] saving file wandb-metadata.json with policy now
+2025-05-21 00:16:09,649 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: python_packages
+2025-05-21 00:16:09,650 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: python_packages
+2025-05-21 00:16:09,650 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: stop_status
+2025-05-21 00:16:09,652 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: stop_status
+2025-05-21 00:16:09,658 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: internal_messages
+2025-05-21 00:16:09,845 DEBUG   SenderThread:1313039 [sender.py:send():379] send: telemetry
+2025-05-21 00:16:09,846 DEBUG   SenderThread:1313039 [sender.py:send():379] send: config
+2025-05-21 00:16:09,848 DEBUG   SenderThread:1313039 [sender.py:send():379] send: metric
+2025-05-21 00:16:09,848 DEBUG   SenderThread:1313039 [sender.py:send():379] send: telemetry
+2025-05-21 00:16:09,849 DEBUG   SenderThread:1313039 [sender.py:send():379] send: metric
+2025-05-21 00:16:09,849 WARNING SenderThread:1313039 [sender.py:send_metric():1341] Seen metric with glob (shouldn't happen)
+2025-05-21 00:16:09,980 INFO    wandb-upload_0:1313039 [upload_job.py:push():131] Uploaded file /tmp/tmp6epgtrpmwandb/jhv3zxia-wandb-metadata.json
+2025-05-21 00:16:10,233 INFO    Thread-12 :1313039 [dir_watcher.py:_on_file_created():271] file/dir created: /home/andreafabbricatore/rainbot/src/wandb/run-20250521_001608-5uzdolj6/files/requirements.txt
+2025-05-21 00:16:10,234 INFO    Thread-12 :1313039 [dir_watcher.py:_on_file_created():271] file/dir created: /home/andreafabbricatore/rainbot/src/wandb/run-20250521_001608-5uzdolj6/files/wandb-metadata.json
+2025-05-21 00:16:10,235 INFO    Thread-12 :1313039 [dir_watcher.py:_on_file_created():271] file/dir created: /home/andreafabbricatore/rainbot/src/wandb/run-20250521_001608-5uzdolj6/files/output.log
+2025-05-21 00:16:11,508 DEBUG   SenderThread:1313039 [sender.py:send():379] send: exit
+2025-05-21 00:16:11,509 INFO    SenderThread:1313039 [sender.py:send_exit():586] handling exit code: 1
+2025-05-21 00:16:11,509 INFO    SenderThread:1313039 [sender.py:send_exit():588] handling runtime: 2
+2025-05-21 00:16:11,512 INFO    SenderThread:1313039 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2025-05-21 00:16:11,512 INFO    SenderThread:1313039 [sender.py:send_exit():594] send defer
+2025-05-21 00:16:11,513 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: defer
+2025-05-21 00:16:11,513 INFO    HandlerThread:1313039 [handler.py:handle_request_defer():172] handle defer: 0
+2025-05-21 00:16:11,513 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: defer
+2025-05-21 00:16:11,514 INFO    SenderThread:1313039 [sender.py:send_request_defer():610] handle sender defer: 0
+2025-05-21 00:16:11,514 INFO    SenderThread:1313039 [sender.py:transition_state():614] send defer: 1
+2025-05-21 00:16:11,514 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: defer
+2025-05-21 00:16:11,514 INFO    HandlerThread:1313039 [handler.py:handle_request_defer():172] handle defer: 1
+2025-05-21 00:16:11,515 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: defer
+2025-05-21 00:16:11,515 INFO    SenderThread:1313039 [sender.py:send_request_defer():610] handle sender defer: 1
+2025-05-21 00:16:11,515 INFO    SenderThread:1313039 [sender.py:transition_state():614] send defer: 2
+2025-05-21 00:16:11,515 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: defer
+2025-05-21 00:16:11,515 INFO    HandlerThread:1313039 [handler.py:handle_request_defer():172] handle defer: 2
+2025-05-21 00:16:11,515 INFO    HandlerThread:1313039 [system_monitor.py:finish():203] Stopping system monitor
+2025-05-21 00:16:11,516 DEBUG   SystemMonitor:1313039 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2025-05-21 00:16:11,517 DEBUG   SystemMonitor:1313039 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2025-05-21 00:16:11,517 DEBUG   SystemMonitor:1313039 [system_monitor.py:_start():183] Publishing last batch of metrics
+2025-05-21 00:16:11,521 INFO    HandlerThread:1313039 [interfaces.py:finish():202] Joined cpu monitor
+2025-05-21 00:16:11,521 INFO    HandlerThread:1313039 [interfaces.py:finish():202] Joined disk monitor
+2025-05-21 00:16:11,646 INFO    HandlerThread:1313039 [interfaces.py:finish():202] Joined gpu monitor
+2025-05-21 00:16:11,646 INFO    HandlerThread:1313039 [interfaces.py:finish():202] Joined memory monitor
+2025-05-21 00:16:11,646 INFO    HandlerThread:1313039 [interfaces.py:finish():202] Joined network monitor
+2025-05-21 00:16:11,647 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: defer
+2025-05-21 00:16:11,647 INFO    SenderThread:1313039 [sender.py:send_request_defer():610] handle sender defer: 2
+2025-05-21 00:16:11,647 INFO    SenderThread:1313039 [sender.py:transition_state():614] send defer: 3
+2025-05-21 00:16:11,648 DEBUG   SenderThread:1313039 [sender.py:send():379] send: stats
+2025-05-21 00:16:11,649 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: defer
+2025-05-21 00:16:11,649 INFO    HandlerThread:1313039 [handler.py:handle_request_defer():172] handle defer: 3
+2025-05-21 00:16:11,650 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: defer
+2025-05-21 00:16:11,650 INFO    SenderThread:1313039 [sender.py:send_request_defer():610] handle sender defer: 3
+2025-05-21 00:16:11,650 INFO    SenderThread:1313039 [sender.py:transition_state():614] send defer: 4
+2025-05-21 00:16:11,651 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: defer
+2025-05-21 00:16:11,651 INFO    HandlerThread:1313039 [handler.py:handle_request_defer():172] handle defer: 4
+2025-05-21 00:16:11,651 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: defer
+2025-05-21 00:16:11,651 INFO    SenderThread:1313039 [sender.py:send_request_defer():610] handle sender defer: 4
+2025-05-21 00:16:11,651 INFO    SenderThread:1313039 [sender.py:transition_state():614] send defer: 5
+2025-05-21 00:16:11,651 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: defer
+2025-05-21 00:16:11,651 INFO    HandlerThread:1313039 [handler.py:handle_request_defer():172] handle defer: 5
+2025-05-21 00:16:11,652 DEBUG   SenderThread:1313039 [sender.py:send():379] send: summary
+2025-05-21 00:16:11,652 INFO    SenderThread:1313039 [sender.py:_save_file():1390] saving file wandb-summary.json with policy end
+2025-05-21 00:16:11,653 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: defer
+2025-05-21 00:16:11,653 INFO    SenderThread:1313039 [sender.py:send_request_defer():610] handle sender defer: 5
+2025-05-21 00:16:11,653 INFO    SenderThread:1313039 [sender.py:transition_state():614] send defer: 6
+2025-05-21 00:16:11,653 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: defer
+2025-05-21 00:16:11,654 INFO    HandlerThread:1313039 [handler.py:handle_request_defer():172] handle defer: 6
+2025-05-21 00:16:11,654 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: defer
+2025-05-21 00:16:11,654 INFO    SenderThread:1313039 [sender.py:send_request_defer():610] handle sender defer: 6
+2025-05-21 00:16:11,658 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: status_report
+2025-05-21 00:16:11,908 INFO    SenderThread:1313039 [sender.py:transition_state():614] send defer: 7
+2025-05-21 00:16:11,909 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: defer
+2025-05-21 00:16:11,909 INFO    HandlerThread:1313039 [handler.py:handle_request_defer():172] handle defer: 7
+2025-05-21 00:16:11,909 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: defer
+2025-05-21 00:16:11,910 INFO    SenderThread:1313039 [sender.py:send_request_defer():610] handle sender defer: 7
+2025-05-21 00:16:12,232 INFO    Thread-12 :1313039 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/andreafabbricatore/rainbot/src/wandb/run-20250521_001608-5uzdolj6/files/output.log
+2025-05-21 00:16:12,232 INFO    Thread-12 :1313039 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/andreafabbricatore/rainbot/src/wandb/run-20250521_001608-5uzdolj6/files/config.yaml
+2025-05-21 00:16:12,233 INFO    Thread-12 :1313039 [dir_watcher.py:_on_file_created():271] file/dir created: /home/andreafabbricatore/rainbot/src/wandb/run-20250521_001608-5uzdolj6/files/wandb-summary.json
+2025-05-21 00:16:12,508 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: poll_exit
+2025-05-21 00:16:13,867 INFO    SenderThread:1313039 [sender.py:transition_state():614] send defer: 8
+2025-05-21 00:16:13,867 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: poll_exit
+2025-05-21 00:16:13,867 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: defer
+2025-05-21 00:16:13,868 INFO    HandlerThread:1313039 [handler.py:handle_request_defer():172] handle defer: 8
+2025-05-21 00:16:13,869 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: defer
+2025-05-21 00:16:13,869 INFO    SenderThread:1313039 [sender.py:send_request_defer():610] handle sender defer: 8
+2025-05-21 00:16:13,869 INFO    SenderThread:1313039 [job_builder.py:build():318] Attempting to build job artifact
+2025-05-21 00:16:13,871 INFO    SenderThread:1313039 [job_builder.py:_get_source_type():455] is repo sourced job
+2025-05-21 00:16:13,899 INFO    SenderThread:1313039 [job_builder.py:build():431] adding wandb-job metadata file
+2025-05-21 00:16:13,909 INFO    SenderThread:1313039 [sender.py:transition_state():614] send defer: 9
+2025-05-21 00:16:13,909 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: defer
+2025-05-21 00:16:13,910 INFO    HandlerThread:1313039 [handler.py:handle_request_defer():172] handle defer: 9
+2025-05-21 00:16:13,910 DEBUG   SenderThread:1313039 [sender.py:send():379] send: artifact
+2025-05-21 00:16:14,233 INFO    Thread-12 :1313039 [dir_watcher.py:_on_file_modified():288] file/dir modified: /home/andreafabbricatore/rainbot/src/wandb/run-20250521_001608-5uzdolj6/files/output.log
+2025-05-21 00:16:14,510 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: poll_exit
+2025-05-21 00:16:15,130 INFO    wandb-upload_0:1313039 [upload_job.py:push():89] Uploaded file /home/andreafabbricatore/.local/share/wandb/artifacts/staging/tmpvf7tab5k
+2025-05-21 00:16:15,871 INFO    wandb-upload_1:1313039 [upload_job.py:push():89] Uploaded file /tmp/tmp7_uup7ll/wandb-job.json
+2025-05-21 00:16:16,995 INFO    SenderThread:1313039 [sender.py:send_artifact():1468] sent artifact job-git_github.com_andreafabbricatore_rainbot.git_src_train_segments_vit.py - {'id': 'QXJ0aWZhY3Q6MTc1MTM0ODMwOA==', 'state': 'PENDING', 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjY0MzA3NDcyOA==', 'latestArtifact': None}}
+2025-05-21 00:16:16,996 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: defer
+2025-05-21 00:16:16,996 INFO    SenderThread:1313039 [sender.py:send_request_defer():610] handle sender defer: 9
+2025-05-21 00:16:16,996 INFO    SenderThread:1313039 [dir_watcher.py:finish():358] shutting down directory watcher
+2025-05-21 00:16:17,235 INFO    SenderThread:1313039 [dir_watcher.py:finish():388] scan: /home/andreafabbricatore/rainbot/src/wandb/run-20250521_001608-5uzdolj6/files
+2025-05-21 00:16:17,235 INFO    SenderThread:1313039 [dir_watcher.py:finish():402] scan save: /home/andreafabbricatore/rainbot/src/wandb/run-20250521_001608-5uzdolj6/files/requirements.txt requirements.txt
+2025-05-21 00:16:17,236 INFO    SenderThread:1313039 [dir_watcher.py:finish():402] scan save: /home/andreafabbricatore/rainbot/src/wandb/run-20250521_001608-5uzdolj6/files/config.yaml config.yaml
+2025-05-21 00:16:17,236 INFO    SenderThread:1313039 [dir_watcher.py:finish():402] scan save: /home/andreafabbricatore/rainbot/src/wandb/run-20250521_001608-5uzdolj6/files/wandb-metadata.json wandb-metadata.json
+2025-05-21 00:16:17,236 INFO    SenderThread:1313039 [dir_watcher.py:finish():402] scan save: /home/andreafabbricatore/rainbot/src/wandb/run-20250521_001608-5uzdolj6/files/wandb-summary.json wandb-summary.json
+2025-05-21 00:16:17,237 INFO    SenderThread:1313039 [dir_watcher.py:finish():402] scan save: /home/andreafabbricatore/rainbot/src/wandb/run-20250521_001608-5uzdolj6/files/output.log output.log
+2025-05-21 00:16:17,247 INFO    SenderThread:1313039 [sender.py:transition_state():614] send defer: 10
+2025-05-21 00:16:17,247 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: poll_exit
+2025-05-21 00:16:17,247 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: defer
+2025-05-21 00:16:17,248 INFO    HandlerThread:1313039 [handler.py:handle_request_defer():172] handle defer: 10
+2025-05-21 00:16:17,253 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: defer
+2025-05-21 00:16:17,253 INFO    SenderThread:1313039 [sender.py:send_request_defer():610] handle sender defer: 10
+2025-05-21 00:16:17,253 INFO    SenderThread:1313039 [file_pusher.py:finish():172] shutting down file pusher
+2025-05-21 00:16:17,512 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: poll_exit
+2025-05-21 00:16:17,513 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: poll_exit
+2025-05-21 00:16:17,641 INFO    wandb-upload_0:1313039 [upload_job.py:push():131] Uploaded file /home/andreafabbricatore/rainbot/src/wandb/run-20250521_001608-5uzdolj6/files/requirements.txt
+2025-05-21 00:16:17,643 INFO    wandb-upload_1:1313039 [upload_job.py:push():131] Uploaded file /home/andreafabbricatore/rainbot/src/wandb/run-20250521_001608-5uzdolj6/files/config.yaml
+2025-05-21 00:16:17,668 INFO    wandb-upload_3:1313039 [upload_job.py:push():131] Uploaded file /home/andreafabbricatore/rainbot/src/wandb/run-20250521_001608-5uzdolj6/files/output.log
+2025-05-21 00:16:17,678 INFO    wandb-upload_2:1313039 [upload_job.py:push():131] Uploaded file /home/andreafabbricatore/rainbot/src/wandb/run-20250521_001608-5uzdolj6/files/wandb-summary.json
+2025-05-21 00:16:17,879 INFO    Thread-11 (_thread_body):1313039 [sender.py:transition_state():614] send defer: 11
+2025-05-21 00:16:17,879 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: defer
+2025-05-21 00:16:17,879 INFO    HandlerThread:1313039 [handler.py:handle_request_defer():172] handle defer: 11
+2025-05-21 00:16:17,880 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: defer
+2025-05-21 00:16:17,880 INFO    SenderThread:1313039 [sender.py:send_request_defer():610] handle sender defer: 11
+2025-05-21 00:16:17,881 INFO    SenderThread:1313039 [file_pusher.py:join():178] waiting for file pusher
+2025-05-21 00:16:17,881 INFO    SenderThread:1313039 [sender.py:transition_state():614] send defer: 12
+2025-05-21 00:16:17,881 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: defer
+2025-05-21 00:16:17,882 INFO    HandlerThread:1313039 [handler.py:handle_request_defer():172] handle defer: 12
+2025-05-21 00:16:17,882 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: defer
+2025-05-21 00:16:17,882 INFO    SenderThread:1313039 [sender.py:send_request_defer():610] handle sender defer: 12
+2025-05-21 00:16:17,882 INFO    SenderThread:1313039 [file_stream.py:finish():614] file stream finish called
+2025-05-21 00:16:18,034 INFO    SenderThread:1313039 [file_stream.py:finish():618] file stream finish is done
+2025-05-21 00:16:18,035 INFO    SenderThread:1313039 [sender.py:transition_state():614] send defer: 13
+2025-05-21 00:16:18,035 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: defer
+2025-05-21 00:16:18,035 INFO    HandlerThread:1313039 [handler.py:handle_request_defer():172] handle defer: 13
+2025-05-21 00:16:18,036 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: defer
+2025-05-21 00:16:18,036 INFO    SenderThread:1313039 [sender.py:send_request_defer():610] handle sender defer: 13
+2025-05-21 00:16:18,036 INFO    SenderThread:1313039 [sender.py:transition_state():614] send defer: 14
+2025-05-21 00:16:18,037 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: defer
+2025-05-21 00:16:18,037 DEBUG   SenderThread:1313039 [sender.py:send():379] send: final
+2025-05-21 00:16:18,038 INFO    HandlerThread:1313039 [handler.py:handle_request_defer():172] handle defer: 14
+2025-05-21 00:16:18,038 DEBUG   SenderThread:1313039 [sender.py:send():379] send: footer
+2025-05-21 00:16:18,038 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: defer
+2025-05-21 00:16:18,039 INFO    SenderThread:1313039 [sender.py:send_request_defer():610] handle sender defer: 14
+2025-05-21 00:16:18,040 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: poll_exit
+2025-05-21 00:16:18,040 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: poll_exit
+2025-05-21 00:16:18,041 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: poll_exit
+2025-05-21 00:16:18,041 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: poll_exit
+2025-05-21 00:16:18,042 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: server_info
+2025-05-21 00:16:18,042 DEBUG   SenderThread:1313039 [sender.py:send_request():406] send_request: server_info
+2025-05-21 00:16:18,044 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: get_summary
+2025-05-21 00:16:18,045 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: sampled_history
+2025-05-21 00:16:18,045 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: internal_messages
+2025-05-21 00:16:18,193 INFO    MainThread:1313039 [wandb_run.py:_footer_history_summary_info():3936] rendering history
+2025-05-21 00:16:18,194 INFO    MainThread:1313039 [wandb_run.py:_footer_history_summary_info():3968] rendering summary
+2025-05-21 00:16:18,194 INFO    MainThread:1313039 [wandb_run.py:_footer_sync_info():3895] logging synced files
+2025-05-21 00:16:18,194 DEBUG   HandlerThread:1313039 [handler.py:handle_request():146] handle_request: shutdown
+2025-05-21 00:16:18,195 INFO    HandlerThread:1313039 [handler.py:finish():866] shutting down handler
+2025-05-21 00:16:19,042 INFO    WriterThread:1313039 [datastore.py:close():296] close: /home/andreafabbricatore/rainbot/src/wandb/run-20250521_001608-5uzdolj6/run-5uzdolj6.wandb
+2025-05-21 00:16:19,193 INFO    SenderThread:1313039 [sender.py:finish():1546] shutting down sender
+2025-05-21 00:16:19,193 INFO    SenderThread:1313039 [file_pusher.py:finish():172] shutting down file pusher
+2025-05-21 00:16:19,193 INFO    SenderThread:1313039 [file_pusher.py:join():178] waiting for file pusher

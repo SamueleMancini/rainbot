@@ -1,0 +1,96 @@
+
+Results for vegetation:
+Average loss: 3.1317
+Top-1 accuracy: 0.2500
+
+Top-3 accuracy: 0.4256
+Top-5 accuracy: 0.5301
+
+Classification Report:
+                      precision    recall  f1-score   support
+
+             Albania       0.17      0.38      0.24        16
+             Andorra       0.56      0.56      0.56        16
+           Argentina       0.16      0.19      0.17        16
+           Australia       0.44      0.25      0.32        16
+             Austria       0.28      0.50      0.36        16
+          Bangladesh       0.33      0.19      0.24        16
+             Belgium       0.00      0.00      0.00        16
+              Bhutan       0.33      0.50      0.40        16
+             Bolivia       0.19      0.19      0.19        16
+            Botswana       1.00      0.38      0.55        16
+              Brazil       0.33      0.12      0.18        16
+            Bulgaria       0.25      0.31      0.28        16
+            Cambodia       0.15      0.25      0.19        16
+              Canada       0.30      0.19      0.23        16
+               Chile       0.00      0.00      0.00        16
+            Colombia       0.00      0.00      0.00        16
+             Croatia       0.09      0.06      0.07        16
+             Czechia       0.50      0.12      0.20        16
+             Denmark       0.50      0.12      0.20        16
+  Dominican Republic       1.00      0.12      0.22        16
+             Ecuador       0.25      0.12      0.17        16
+             Estonia       0.46      0.38      0.41        16
+            Eswatini       0.25      0.38      0.30        16
+             Finland       0.22      0.12      0.16        16
+              France       0.11      0.06      0.08        16
+             Germany       0.36      0.56      0.44        16
+               Ghana       0.29      0.38      0.32        16
+              Greece       0.17      0.31      0.22        16
+           Greenland       0.62      0.81      0.70        16
+           Guatemala       0.12      0.31      0.18        16
+             Hungary       0.21      0.25      0.23        16
+             Iceland       0.13      0.25      0.17        16
+           Indonesia       0.31      0.25      0.28        16
+             Ireland       0.33      0.38      0.35        16
+              Israel       0.31      0.31      0.31        16
+               Italy       0.25      0.12      0.17        16
+               Japan       0.17      0.06      0.09        16
+              Jordan       0.33      0.88      0.47        16
+               Kenya       0.38      0.19      0.25        16
+          Kyrgyzstan       0.53      0.50      0.52        16
+              Latvia       0.09      0.06      0.07        16
+             Lesotho       0.21      0.56      0.31        16
+           Lithuania       0.23      0.31      0.26        16
+          Luxembourg       0.44      0.25      0.32        16
+            Malaysia       0.00      0.00      0.00        16
+              Mexico       0.50      0.12      0.20        16
+            Mongolia       0.16      0.31      0.21        16
+          Montenegro       0.21      0.38      0.27        16
+         Netherlands       0.17      0.06      0.09        16
+         New Zealand       0.22      0.12      0.16        16
+             Nigeria       0.00      0.00      0.00        16
+     North Macedonia       0.13      0.38      0.19        16
+              Norway       0.10      0.06      0.08        16
+           Palestine       0.43      0.62      0.51        16
+                Peru       0.15      0.25      0.19        16
+         Philippines       0.47      0.44      0.45        16
+              Poland       0.00      0.00      0.00        16
+            Portugal       0.50      0.06      0.11        16
+             Romania       0.00      0.00      0.00        16
+              Russia       0.12      0.38      0.18        16
+             Senegal       0.50      0.12      0.20        16
+              Serbia       0.14      0.06      0.09        16
+           Singapore       0.75      0.19      0.30        16
+            Slovakia       0.21      0.19      0.20        16
+            Slovenia       0.24      0.25      0.24        16
+        South Africa       0.29      0.12      0.17        16
+         South Korea       0.50      0.31      0.38        16
+               Spain       0.50      0.12      0.20        16
+           Sri Lanka       0.38      0.31      0.34        16
+              Sweden       0.17      0.12      0.14        16
+         Switzerland       0.07      0.12      0.09        16
+              Taiwan       0.40      0.38      0.39        16
+            Thailand       0.25      0.06      0.10        16
+              Turkey       0.21      0.44      0.28        16
+             Ukraine       0.11      0.19      0.14        16
+United Arab Emirates       0.27      0.62      0.38        16
+      United Kingdom       0.40      0.12      0.19        16
+       United States       0.31      0.25      0.28        16
+             Uruguay       0.20      0.31      0.24        16
+
+            accuracy                           0.25      1264
+           macro avg       0.28      0.25      0.23      1264
+        weighted avg       0.28      0.25      0.23      1264
+
+==================================================

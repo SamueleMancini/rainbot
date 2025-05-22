@@ -1,0 +1,23 @@
+
+Results for person:
+Average loss: 1.8082
+Top-1 accuracy: 0.2475
+
+Top-3 accuracy: 0.5808
+Top-5 accuracy: 0.8283
+
+Classification Report:
+               precision    recall  f1-score   support
+
+       Africa       0.25      0.24      0.25        33
+         Asia       0.25      0.12      0.16        33
+       Europe       0.11      0.06      0.08        33
+North America       0.24      0.64      0.35        33
+      Oceania       0.50      0.12      0.20        33
+South America       0.27      0.30      0.29        33
+
+     accuracy                           0.25       198
+    macro avg       0.27      0.25      0.22       198
+ weighted avg       0.27      0.25      0.22       198
+
+==================================================

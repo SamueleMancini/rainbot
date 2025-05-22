@@ -35,9 +35,7 @@ num_classes = len(COUNTRIES)
 print("Number of classes:", num_classes)
 
 project_root = Path().resolve().parent
-SEGMENTS = [d.name for d in (project_root / "datasets" / "segmented").iterdir() if d.is_dir()]
-EXCLUDED_SEGMENTS = {"bus", "train", "rider", "truck", "motorcycle"}
-SEGMENTS = [s for s in SEGMENTS if s not in EXCLUDED_SEGMENTS]
+SEGMENTS = ['road', 'vegetation', 'terrain']
 
 for segment in SEGMENTS:
     print(f"\nTraining model for {segment}")
