@@ -1,7 +1,5 @@
 # RainBot
 
-A machine learning project for geographical image classification using various deep learning models.
-
 ## Project Structure
 
 ```
