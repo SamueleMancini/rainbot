@@ -1,11 +1,3 @@
 # rainbot
 
-COUNTRIES = ['Argentina', 'Australia', 'Austria', 'Bangladesh', 'Belgium', 'Bhutan',
-             'Bolivia', 'Botswana', 'Brazil', 'Bulgaria', 'Cambodia', 'Canada', 'Chile', 'Colombia',
-             'Croatia', 'Czechia', 'Denmark', 'Estonia', 'Finland', 'France', 'Germany',
-             'Ghana', 'Greece', 'Hungary', 'Iceland', 'India', 'Indonesia', 'Ireland',
-             'Israel', 'Italy', 'Japan', 'Kenya', 'Latvia', 'Lithuania', 'Malaysia',
-             'Mexico', 'Netherlands', 'New Zealand', 'Nigeria', 'Norway', 'Peru', 'Philippines', 'Poland',
-             'Portugal', 'Romania', 'Russia', 'Slovakia', 'Slovenia',
-             'South Africa', 'South Korea', 'Spain', 'Sweden', 'Switzerland', 'Taiwan',
-             'Thailand', 'Turkey', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States of America']
+COUNTRIES = ['Albania', 'Andorra', 'Australia', 'Austria', 'Bangladesh', 'Belgium', 'Bhutan', 'Bolivia', 'Brazil', 'Bulgaria', 'Cambodia', 'Canada', 'Chile', 'Colombia', 'Croatia', 'Czechia', 'Denmark', 'Dominican Republic', 'Ecuador', 'Estonia', 'Eswatini', 'Finland', 'France', 'Germany', 'Greece', 'Guatemala', 'Hungary', 'Iceland', 'Indonesia', 'Ireland', 'Israel', 'Italy', 'Japan', 'Jordan', 'Latvia', 'Lesotho', 'Lithuania', 'Luxembourg', 'Malaysia', 'Mexico', 'Montenegro', 'Netherlands', 'New Zealand', 'North Macedonia', 'Norway', 'Palestine', 'Peru', 'Poland', 'Portugal', 'Romania', 'Russia', 'Serbia', 'Singapore', 'Slovakia', 'Slovenia', 'South Africa', 'South Korea', 'Spain', 'Sweden', 'Switzerland', 'Taiwan', 'Thailand', 'Turkey', 'United Arab Emirates', 'United Kingdom', 'United States']
