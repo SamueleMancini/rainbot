@@ -10,7 +10,7 @@ rainbot/
 ├── notebooks/            # Jupyter notebooks for analysis and experiments
 ├── pre_processing/       # Data preprocessing scripts
 ├── data_extraction/      # Data collection and extraction utilities
-├── cache/                # Cached data and intermediate results
+├── cache/                # Precomputed model output probs to accelerate ensemble training
 ├── logs/                 # Training logs and metrics
 └── plots/                # Generated plots and visualizations
 ```
@@ -46,7 +46,6 @@ These scripts will download:
 
 - **Datasets**: The project works with:
   - Country-level classification (66 countries)
-  - Continent-level classification (6 continents)
   - Segmented datasets (road, vegetation, terrain)
 
 - **Training Scripts**: Located in `src/`:
