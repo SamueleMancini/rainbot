@@ -397,6 +397,48 @@ def evaluate_model(model, data_loader, criterion, device):
     return avg_loss, top1_acc, all_targets, all_preds, all_probs
 
 
+def evaluate_vit_model(model, data_loader, criterion, device):
+    """
+    Runs model on data_loader and returns:
+      - avg_loss: float
+      - top1_acc: float
+      - all_targets: np.array shape (N,)
+      - all_preds:   np.array shape (N,)
+      - all_probs:   np.array shape (N, num_classes)
+    """
+    model.eval()
+    total_loss, total_correct, total_samples = 0.0, 0, 0
+    all_preds, all_targets, all_probs = [], [], []
+
+    with torch.no_grad():
+        for imgs, labels in data_loader:
+            imgs, labels = imgs.to(device), labels.to(device)
+            outputs = model(imgs)
+            loss    = criterion(outputs, labels)
+
+            # accumulate loss & top‐1 accuracy
+            batch_size = imgs.size(0)
+            total_loss    += loss.item() * batch_size
+            preds         = outputs.argmax(dim=1)
+            total_correct += (preds == labels).sum().item()
+            total_samples += batch_size
+
+            # store for detailed metrics
+            all_probs.append(softmax(outputs).cpu().numpy())
+            all_preds.append(preds.cpu().numpy())
+            all_targets.append(labels.cpu().numpy())
+
+    # flatten
+    all_probs   = np.vstack(all_probs)
+    all_preds   = np.concatenate(all_preds)
+    all_targets = np.concatenate(all_targets)
+
+    avg_loss = total_loss / total_samples
+    top1_acc = total_correct / total_samples
+
+    return avg_loss, top1_acc, all_targets, all_preds, all_probs
+
+
 def print_metrics(all_targets, all_preds, all_probs, class_names):
     """
     Given flattened targets, preds, and probs:
