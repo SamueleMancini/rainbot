@@ -29,7 +29,72 @@ else:
 
 print("Using device:", device)
 
-COUNTRIES = ["Albania","Andorra","Argentina","Australia","Austria","Bangladesh","Belgium","Bhutan","Bolivia","Botswana","Brazil","Bulgaria","Cambodia","Canada","Chile","Colombia","Croatia","Czechia","Denmark","Dominican Republic","Ecuador","Estonia","Eswatini","Finland","France","Germany","Ghana","Greece","Greenland","Guatemala","Hungary","Iceland","Indonesia","Ireland","Israel","Italy","Japan","Jordan","Kenya","Kyrgyzstan","Latvia","Lesotho","Lithuania","Luxembourg","Malaysia","Mexico","Mongolia","Montenegro","Netherlands","New Zealand","Nigeria","North Macedonia","Norway","Palestine","Peru","Philippines","Poland","Portugal","Romania","Russia","Senegal","Serbia","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","Sweden","Switzerland","Taiwan","Thailand","Turkey","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay"]
+COUNTRIES = ['Albania',
+ 'Andorra',
+ 'Australia',
+ 'Austria',
+ 'Bangladesh',
+ 'Belgium',
+ 'Bhutan',
+ 'Bolivia',
+ 'Brazil',
+ 'Bulgaria',
+ 'Cambodia',
+ 'Canada',
+ 'Chile',
+ 'Colombia',
+ 'Croatia',
+ 'Czechia',
+ 'Denmark',
+ 'Dominican Republic',
+ 'Ecuador',
+ 'Estonia',
+ 'Eswatini',
+ 'Finland',
+ 'France',
+ 'Germany',
+ 'Greece',
+ 'Guatemala',
+ 'Hungary',
+ 'Iceland',
+ 'Indonesia',
+ 'Ireland',
+ 'Israel',
+ 'Italy',
+ 'Japan',
+ 'Jordan',
+ 'Latvia',
+ 'Lesotho',
+ 'Lithuania',
+ 'Luxembourg',
+ 'Malaysia',
+ 'Mexico',
+ 'Montenegro',
+ 'Netherlands',
+ 'New Zealand',
+ 'North Macedonia',
+ 'Norway',
+ 'Palestine',
+ 'Peru',
+ 'Poland',
+ 'Portugal',
+ 'Romania',
+ 'Russia',
+ 'Serbia',
+ 'Singapore',
+ 'Slovakia',
+ 'Slovenia',
+ 'South Africa',
+ 'South Korea',
+ 'Spain',
+ 'Sweden',
+ 'Switzerland',
+ 'Taiwan',
+ 'Thailand',
+ 'Turkey',
+ 'United Arab Emirates',
+ 'United Kingdom',
+ 'United States']
 num_classes = len(COUNTRIES)
 
 print("Number of classes:", num_classes)
@@ -68,7 +133,7 @@ for segment in SEGMENTS:
 
     print(f"Starting training for {segment}...")
 
-    model_save_path = project_root / "models" / f"resnet_finetuned_{segment}" / "main.pth"
+    model_save_path = project_root / "models" / f"resnet_finetuned_{segment}_new" / "main.pth"
     results = train_model(model, train_loader, val_loader, device, optimizer, 
                          model_save_path, criterion=nn.CrossEntropyLoss(), 
                          epochs=50, eval_every=50, patience=3)

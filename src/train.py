@@ -29,7 +29,72 @@ else:
 
 print("Using device:", device)
 
-COUNTRIES = ["Albania","Andorra","Argentina","Australia","Austria","Bangladesh","Belgium","Bhutan","Bolivia","Botswana","Brazil","Bulgaria","Cambodia","Canada","Chile","Colombia","Croatia","Czechia","Denmark","Dominican Republic","Ecuador","Estonia","Eswatini","Finland","France","Germany","Ghana","Greece","Greenland","Guatemala","Hungary","Iceland","Indonesia","Ireland","Israel","Italy","Japan","Jordan","Kenya","Kyrgyzstan","Latvia","Lesotho","Lithuania","Luxembourg","Malaysia","Mexico","Mongolia","Montenegro","Netherlands","New Zealand","Nigeria","North Macedonia","Norway","Palestine","Peru","Philippines","Poland","Portugal","Romania","Russia","Senegal","Serbia","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","Sweden","Switzerland","Taiwan","Thailand","Turkey","Ukraine","United Arab Emirates","United Kingdom","United States","Uruguay"]
+COUNTRIES = ['Albania',
+ 'Andorra',
+ 'Australia',
+ 'Austria',
+ 'Bangladesh',
+ 'Belgium',
+ 'Bhutan',
+ 'Bolivia',
+ 'Brazil',
+ 'Bulgaria',
+ 'Cambodia',
+ 'Canada',
+ 'Chile',
+ 'Colombia',
+ 'Croatia',
+ 'Czechia',
+ 'Denmark',
+ 'Dominican Republic',
+ 'Ecuador',
+ 'Estonia',
+ 'Eswatini',
+ 'Finland',
+ 'France',
+ 'Germany',
+ 'Greece',
+ 'Guatemala',
+ 'Hungary',
+ 'Iceland',
+ 'Indonesia',
+ 'Ireland',
+ 'Israel',
+ 'Italy',
+ 'Japan',
+ 'Jordan',
+ 'Latvia',
+ 'Lesotho',
+ 'Lithuania',
+ 'Luxembourg',
+ 'Malaysia',
+ 'Mexico',
+ 'Montenegro',
+ 'Netherlands',
+ 'New Zealand',
+ 'North Macedonia',
+ 'Norway',
+ 'Palestine',
+ 'Peru',
+ 'Poland',
+ 'Portugal',
+ 'Romania',
+ 'Russia',
+ 'Serbia',
+ 'Singapore',
+ 'Slovakia',
+ 'Slovenia',
+ 'South Africa',
+ 'South Korea',
+ 'Spain',
+ 'Sweden',
+ 'Switzerland',
+ 'Taiwan',
+ 'Thailand',
+ 'Turkey',
+ 'United Arab Emirates',
+ 'United Kingdom',
+ 'United States']
 num_classes = len(COUNTRIES)
 
 print("Number of classes:", num_classes)
@@ -63,7 +128,7 @@ optimizer = optim.Adam(model.parameters(), lr= 1e-4)
 
 print("Starting training...")
 
-results = train_model(model, train_loader, val_loader, device, optimizer, project_root/ "models" / "resnet_finetuned" / "main.pth", criterion=nn.CrossEntropyLoss(), epochs=50, eval_every=50, patience=3)
+results = train_model(model, train_loader, val_loader, device, optimizer, project_root/ "models" / "resnet_finetuned_new" / "main.pth", criterion=nn.CrossEntropyLoss(), epochs=50, eval_every=50, patience=3)
 
 plot_training_curves(PROJECT_ROOT, results["train_loss"], results["train_acc"],
                      results["val_loss"], results["val_acc"],
