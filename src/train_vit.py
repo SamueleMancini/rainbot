@@ -111,7 +111,6 @@ def apply_transform(example):
     return {"pixel_values": tensor, "label": example["label"]}
 
 project_root = Path().resolve().parent
-SEGMENTS = ['road', 'vegetation', 'terrain']
 
 train_root  = project_root/ "datasets" / "final_datasets" / "train"
 dev_root  = project_root/ "datasets" / "final_datasets" / "val"
