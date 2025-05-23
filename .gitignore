@@ -11,3 +11,4 @@ data/
 datasets/*
 !datasets/*.py
 models/swin_b_finetuned/
+**/__pycache__/
