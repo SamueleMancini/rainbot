@@ -45,7 +45,7 @@ These scripts will download:
   - Specialized models for different image segments
 
 - **Datasets**: The project works with:
-  - Country-level classification (70 countries)
+  - Country-level classification (66 countries)
   - Continent-level classification (6 continents)
   - Segmented datasets (road, vegetation, terrain)
 
