@@ -15,6 +15,7 @@ from sklearn.metrics import (
     confusion_matrix
 )
 import torch.nn.functional as F
+from transformers import SwinForImageClassification, SwinConfig
 
 ############################## Data Loading and Preprocessing ##############################
 
@@ -310,12 +311,45 @@ def plot_training_curves(project_root, train_losses, train_accs, val_losses, val
     plt.savefig(plot_path, dpi=300, bbox_inches='tight')
     plt.show()
 
+
+
+
+############################## Evaluation ##############################
+
+
 def load_model(model_path, device, num_classes=num_classes):
     model = models.resnet50(weights=models.ResNet50_Weights.DEFAULT)
     model.fc = nn.Linear(model.fc.in_features, num_classes)
     model.load_state_dict(torch.load(model_path, map_location=device))
     model = model.to(device)
     model.eval()
+    return model
+
+def load_vit_model(model_path, device, num_classes=num_classes):
+    """
+    model_path   : Path or str to folder containing config.json & pytorch_model.bin
+    device      : torch.device
+    num_classes : int, number of output labels
+    id2label    : dict mapping label IDs to string names
+    label2id    : dict mapping string names to label IDs
+    """
+
+
+    label2id = {label: idx for idx, label in enumerate(COUNTRIES)}
+    id2label = {idx: label for label, idx in label2id.items()}
+
+    config = SwinConfig.from_pretrained(model_path)
+    config.num_labels = num_classes
+    config.id2label   = id2label
+    config.label2id   = label2id
+
+    model = SwinForImageClassification.from_pretrained(
+        pretrained_model_name_or_path=model_path,
+        config=config,
+        ignore_mismatched_sizes=True
+    )
+
+    model.to(device).eval()
     return model
 
 
