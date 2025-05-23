@@ -3,7 +3,6 @@ data_extraction/cache/
 cubo_env/
 data_extraction/additional_images
 data_extraction/streetview_images
-datasets/
 small_dataset/
 medium_dataset/
 small_models/
