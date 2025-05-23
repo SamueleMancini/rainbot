@@ -245,7 +245,7 @@ def plot_training_curves(project_root, train_losses, train_accs, val_losses, val
     plt.savefig(plot_path, dpi=300, bbox_inches='tight')
     plt.show()
 
-def load_model(model_path, num_classes, device):
+def load_model(model_path, device, num_classes=num_classes):
     model = models.resnet50(weights=models.ResNet50_Weights.DEFAULT)
     model.fc = nn.Linear(model.fc.in_features, num_classes)
     model.load_state_dict(torch.load(model_path, map_location=device))
