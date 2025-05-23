@@ -8,7 +8,72 @@ import numpy as np
 from pathlib import Path
 
 # Your labels
-COUNTRIES = ['Albania', 'Andorra', 'Australia', 'Austria', 'Bangladesh', 'Belgium', 'Bhutan', 'Bolivia', 'Brazil', 'Bulgaria', 'Cambodia', 'Canada', 'Chile', 'Colombia', 'Croatia', 'Czechia', 'Denmark', 'Dominican Republic', 'Ecuador', 'Estonia', 'Eswatini', 'Finland', 'France', 'Germany', 'Greece', 'Guatemala', 'Hungary', 'Iceland', 'Indonesia', 'Ireland', 'Israel', 'Italy', 'Japan', 'Jordan', 'Latvia', 'Lesotho', 'Lithuania', 'Luxembourg', 'Malaysia', 'Mexico', 'Montenegro', 'Netherlands', 'New Zealand', 'North Macedonia', 'Norway', 'Palestine', 'Peru', 'Poland', 'Portugal', 'Romania', 'Russia', 'Serbia', 'Singapore', 'Slovakia', 'Slovenia', 'South Africa', 'South Korea', 'Spain', 'Sweden', 'Switzerland', 'Taiwan', 'Thailand', 'Turkey', 'United Arab Emirates', 'United Kingdom', 'United States']
+COUNTRIES = ['Albania',
+ 'Andorra',
+ 'Australia',
+ 'Austria',
+ 'Bangladesh',
+ 'Belgium',
+ 'Bhutan',
+ 'Bolivia',
+ 'Brazil',
+ 'Bulgaria',
+ 'Cambodia',
+ 'Canada',
+ 'Chile',
+ 'Colombia',
+ 'Croatia',
+ 'Czechia',
+ 'Denmark',
+ 'Dominican Republic',
+ 'Ecuador',
+ 'Estonia',
+ 'Eswatini',
+ 'Finland',
+ 'France',
+ 'Germany',
+ 'Greece',
+ 'Guatemala',
+ 'Hungary',
+ 'Iceland',
+ 'Indonesia',
+ 'Ireland',
+ 'Israel',
+ 'Italy',
+ 'Japan',
+ 'Jordan',
+ 'Latvia',
+ 'Lesotho',
+ 'Lithuania',
+ 'Luxembourg',
+ 'Malaysia',
+ 'Mexico',
+ 'Montenegro',
+ 'Netherlands',
+ 'New Zealand',
+ 'North Macedonia',
+ 'Norway',
+ 'Palestine',
+ 'Peru',
+ 'Poland',
+ 'Portugal',
+ 'Romania',
+ 'Russia',
+ 'Serbia',
+ 'Singapore',
+ 'Slovakia',
+ 'Slovenia',
+ 'South Africa',
+ 'South Korea',
+ 'Spain',
+ 'Sweden',
+ 'Switzerland',
+ 'Taiwan',
+ 'Thailand',
+ 'Turkey',
+ 'United Arab Emirates',
+ 'United Kingdom',
+ 'United States']
 label2id = {label: idx for idx, label in enumerate(COUNTRIES)}
 id2label = {idx: label for label, idx in label2id.items()}
 num_classes = len(COUNTRIES)
@@ -95,14 +160,14 @@ for segment in SEGMENTS:
     ).to(device)
 
     training_args = TrainingArguments(
-        output_dir=str(project_root / "models" / f"swin_b_finetuned_{segment}"),
+        output_dir=str(project_root / "models" / f"swin_b_finetuned_{segment}_new"),
         per_device_train_batch_size=32,
         per_device_eval_batch_size=32,
         evaluation_strategy="epoch",
         save_strategy="epoch",
         num_train_epochs=100,
         learning_rate=5e-5,
-        logging_dir=str(project_root / "logs" / f"{segment}"),
+        logging_dir=str(project_root / "logs" / f"{segment}_new"),
         load_best_model_at_end=True,
         metric_for_best_model="accuracy",
         save_total_limit=1,
@@ -128,4 +193,4 @@ for segment in SEGMENTS:
     trainer.train()
 
     # Save best model + processor
-    trainer.model.save_pretrained(str(project_root / "models" / f"swin_b_finetuned_{segment}"))
+    trainer.model.save_pretrained(str(project_root / "models" / f"swin_b_finetuned_{segment}_new"))
