@@ -1,5 +1,4 @@
 # RainBot
-## Introduction
 
 In this project, we built a multi-cue geolocation system by (1) fine-tuning ResNet-50 and Swin-B on full StreetView images and (2) training sub-models on segmented regions (road, vegetation, terrain). These were combined in a lightweight neural ensemble that improved accuracy by leveraging each model’s unique strengths.
 
